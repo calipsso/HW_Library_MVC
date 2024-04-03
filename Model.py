@@ -12,7 +12,7 @@ class DbConnection:
         self.cursor = self.conn.cursor()
     def ExecQuery(self, query, parameters):
         self.cursor.execute(query, parameters)
-        print(self.cursor.fetchall())
+        return self.cursor.fetchall()
 
     def CloseConnection(self):
         self.conn.close()
@@ -30,8 +30,10 @@ class DbLibraryOperations:
         autID = input()
         print("Vlozte Genre ID")
         genID = input()
-        add = "INSERT INTO books (title,author_id, genre_id, ISBN) VALUES (%s, %s, %s, %s)"
-        parameters = title,autID, genID, ISBN
+        print("Kopie")
+        copies = input()
+        add = "INSERT INTO books (title,author_id, genre_id, ISBN, copies) VALUES (%s, %s, %s, %s, %s)"
+        parameters = title,autID, genID, ISBN, copies
         return self.db_connection.ExecQuery(add, parameters)
     def searchBook(self, searchInfo):
         search = ("SELECT title, author_id, genre_id from books WHERE title = %s", (searchInfo, ))
