@@ -13,7 +13,12 @@ class DbConnection:
     def ExecQuery(self, query, parameters):
         self.cursor.execute(query, parameters)
         self.conn.commit()
-        return self.cursor.lastrowid
+        self.conn.close()
+    def searchQuery(self, query, parameters):
+        self.cursor.execute(query, parameters)
+        print(self.cursor.fetchall())
+        self.conn.close()
+
     def CloseConnection(self):
         self.conn.close()
 
@@ -35,9 +40,12 @@ class DbLibraryOperations:
         add = "INSERT INTO books (title,author_id, genre_id, ISBN, copies) VALUES (%s, %s, %s, %s, %s)"
         parameters = title,autID, genID, ISBN, copies
         return self.db_connection.ExecQuery(add, parameters)
-    def searchBook(self, searchInfo):
-        search = ("SELECT title, author_id, genre_id from books WHERE title = %s", (searchInfo, ))
-        return self.db_connection.ExecQuery(search)
+    #def searchBook(self):
+        #print("Zadajte ID knihy")
+        #id = input()
+        #search = "SELECT title FROM books WHERE book_id = %s"
+        #parameter = id
+        #return self.db_connection.searchQuery(search, parameter)
     def addUser(self, userInfo):
         addUsr = ("INSERT INTO members (first_name, last_name, email, registration_date) VALUES (%s, %s, %s, %s)",(userInfo, ))
         return self.db_connection.ExecQuery(addUsr)
