@@ -1,10 +1,10 @@
 from Model import DbLibraryOperations
-from view import LibViewer
+#from view import LibViewer
 
 class LibController:
     def __init__(self):
         self.mLib = DbLibraryOperations()
-        self.vLib = LibViewer()
+        #self.vLib = LibViewer()
 
     def add_Book(self):
         self.mLib.addBook()

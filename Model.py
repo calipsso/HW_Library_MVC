@@ -12,8 +12,8 @@ class DbConnection:
         self.cursor = self.conn.cursor()
     def ExecQuery(self, query, parameters):
         self.cursor.execute(query, parameters)
-        return self.cursor.fetchall()
-
+        self.conn.commit()
+        return self.cursor.lastrowid
     def CloseConnection(self):
         self.conn.close()
 
