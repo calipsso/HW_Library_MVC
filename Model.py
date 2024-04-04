@@ -34,8 +34,8 @@ class DbLibraryOperations:
         title = self.getUsrInput("Vlozte nazov knihy: ")
         ISBN = self.getUsrInput("Vlozte ISBN knihy: ")
         pubYear = self.getUsrInput("Vlozte rok vydania knihy")
-        autID = self.getUsrInput("Vlozte autora knihy: ")
-        genID = self.getUsrInput("Vlozte zaner knihy: ")
+        autID = self.getUsrInput("Vlozte ID autora knihy: ")
+        genID = self.getUsrInput("Vlozte ID zanru knihy: ")
         copies = self.getUsrInput("Vlozte mnozstvo kopii: ")
         add = "INSERT INTO books (title,author_id, genre_id, ISBN, publication_year, copies) VALUES (%s, %s, %s, %s, %s, %s)"
         parameters = title,autID, genID, ISBN, pubYear,copies

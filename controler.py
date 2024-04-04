@@ -32,8 +32,10 @@ class LibController:
                 self.vLib.showBooks()
                 print("----------------")
                 self.vLib.searchBook()
+                input("Pre navrat do menu stlac enter")
             elif vyber == 4:
                 self.vLib.searchUsr()
+                input("Pre navrat do menu stlac enter")
             elif vyber == 5:
                 self.vLib.showBooks()
                 self.mLib.delBook()
@@ -46,7 +48,10 @@ class LibController:
                 print("----------------")
                 self.mLib.borrowBook()
             elif vyber == 8:
+                self.vLib.showUsr()
+                print("----------------")
                 self.vLib.showBorowBook()
+                input("Pre navrat do menu stlac enter")
             elif vyber == 9:
                 break
             else:
