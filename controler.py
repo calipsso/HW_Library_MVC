@@ -15,7 +15,8 @@ class LibController:
             print("5. Vymazat knihu")
             print("6. Vymaz uzivatela")
             print("7. Rezervacia na meno")
-            print("8. Ukonci program")
+            print("8. Vypis vypoziciek podal clena")
+            print("9. Ukonci program")
             vyber = int(input("zadaj volbu: "))
 
             if vyber == 1:
@@ -43,9 +44,10 @@ class LibController:
                 print("----------------")
                 self.vLib.showBooks()
                 print("----------------")
-
-
+                self.mLib.borrowBook()
             elif vyber == 8:
+                self.vLib.showBorowBook()
+            elif vyber == 9:
                 break
             else:
                 print("Neplatny vstup")

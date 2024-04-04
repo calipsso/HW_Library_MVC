@@ -26,6 +26,11 @@ class LibViewer:
     def showUsr(self):
         show = "SELECT member_id, last_name FROM members"
         return self.db_connection.showQuery(show)
+    def showBorowBook(self):
+        usrId = self.mLib.getUsrInput("Zadaj ID uzivatela: ")
+        search = "SELECT * from loans WHERE member_id = %s "
+        parameters = (usrId,)
+        return self.db_connection.searchQuery(search, parameters)
 
 
 

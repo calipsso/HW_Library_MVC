@@ -59,6 +59,7 @@ class DbLibraryOperations:
         return self.db_connection.ExecQuery(add, parameters)
     def borrowBook(self):
         bookId = self.getUsrInput("Zadaj ID knihy")
+        memberId = self.getUsrInput("Zadaj ID Uzivatela")
         add = "INSERT INTO loans (book_id, member_id) VALUES (%s, %s)"
-        parameters = bookId
+        parameters = bookId, memberId
         return self.db_connection.ExecQuery(add, parameters)
