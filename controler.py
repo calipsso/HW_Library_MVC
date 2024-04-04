@@ -5,13 +5,7 @@ class LibController:
         self.mLib = DbLibraryOperations()
         self.vLib = LibViewer()
 
-    def add_Book(self):
-        self.mLib.addBook()
-
-    def add_User(self, userInfo):
-        self.mLib.addUser(userInfo)
-
-    def menu(self):
+    def aplikacia_kniznica(self):
         while True:
             print("Vyberte z menu:")
             print("1. Pridat knihu")
@@ -25,5 +19,7 @@ class LibController:
                 self.mLib.addUser()
             elif vyber == 3:
                 self.vLib.searchBook()
+            elif vyber == 4:
+                break
             else:
                 print("Neplatny vstup")

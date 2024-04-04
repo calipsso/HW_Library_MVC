@@ -7,4 +7,4 @@ from controler import LibController
 #db_operations = DbLibraryOperations()
 #lib_viewer = LibViewer()
 lib_controller = LibController()
-lib_controller.menu()
+lib_controller.aplikacia_kniznica()
