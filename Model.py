@@ -13,15 +13,16 @@ class DbConnection:
     def ExecQuery(self, query, parameters):
         self.cursor.execute(query, parameters)
         self.conn.commit()
-        self.conn.close()
     def searchQuery(self, query, parameters):
         self.cursor.execute(query, parameters)
         print(self.cursor.fetchall())
-        self.conn.close()
-
+    def showQuery(self, query):
+        self.cursor.execute(query)
+        lib = self.cursor.fetchall()
+        for item in lib:
+            print(f"ID: {item[0]}, title: {item[1]}")
     def CloseConnection(self):
         self.conn.close()
-
 class DbLibraryOperations:
     def __init__(self):
         self.db_connection = DbConnection()
@@ -38,6 +39,11 @@ class DbLibraryOperations:
         add = "INSERT INTO books (title,author_id, genre_id, ISBN, copies) VALUES (%s, %s, %s, %s, %s)"
         parameters = title,autID, genID, ISBN, copies
         return self.db_connection.ExecQuery(add, parameters)
+    def delBook(self):
+        bookId = self.getUsrInput("Zadaj ID knihy")
+        add = "DELETE FROM books WHERE book_id = %s "
+        parameters = (bookId, )
+        return self.db_connection.ExecQuery(add, parameters)
     def addUser(self):
         meno =self.getUsrInput("Vloz meno: ")
         priezvisko = self.getUsrInput("Vloz priezvisko: ")
@@ -45,7 +51,3 @@ class DbLibraryOperations:
         addUsr = "INSERT INTO members (first_name, last_name, email) VALUES (%s, %s, %s)"
         parameters = meno, priezvisko,email
         return self.db_connection.ExecQuery(addUsr, parameters)
-
-    def checkUsr(self, checkInfo):
-        search = ("SELECT * from members WHERE first_name = %s ", (checkInfo))
-        return self.db_connection.ExecQuery(search)

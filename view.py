@@ -5,10 +5,18 @@ class LibViewer:
         self.db_connection = DbConnection()
         self.mLib = DbLibraryOperations()
     def searchBook(self):
-        id = self.mLib.getUsrInput("Vlozte nazov knihy: ")
+        id = self.mLib.getUsrInput("Vloz nazov knihy: ")
         search = "SELECT title FROM books WHERE book_id = %s"
         parameter = id
         return self.db_connection.searchQuery(search, parameter)
+    def searchUsr(self):
+        priezvisko = self.mLib.getUsrInput("Zadaj priezvisko uzivatela: ")
+        search = "SELECT * from members WHERE first_name = %s "
+        parameters = priezvisko
+        return self.db_connection.searchQuery(search, parameters)
+    def showBooks(self):
+        show = "SELECT book_id, title FROM books"
+        return self.db_connection.showQuery(show)
 
 
 

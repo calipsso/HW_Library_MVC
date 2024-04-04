@@ -11,6 +11,8 @@ class LibController:
             print("1. Pridat knihu")
             print("2. Registracia uzivatela")
             print("3. Vyhladat knihu")
+            print("4. Vyhladat uzivatela")
+            print("5. Vymazat knihu")
             vyber = int(input("zadaj volbu: "))
 
             if vyber == 1:
@@ -19,5 +21,10 @@ class LibController:
                 self.mLib.addUser()
             elif vyber == 3:
                 self.vLib.searchBook()
+            elif vyber == 4:
+                self.vLib.searchUsr()
+            elif vyber == 5:
+                self.vLib.showBooks()
+                self.mLib.delBook()
             else:
                 print("Neplatny vstup")
