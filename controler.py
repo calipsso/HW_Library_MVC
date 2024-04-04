@@ -19,7 +19,5 @@ class LibController:
                 self.mLib.addUser()
             elif vyber == 3:
                 self.vLib.searchBook()
-            elif vyber == 4:
-                break
             else:
                 print("Neplatny vstup")
