@@ -18,9 +18,9 @@ class DbConnection:
         print(self.cursor.fetchall())
     def showQuery(self, query):
         self.cursor.execute(query)
-        lib = self.cursor.fetchall()
-        for item in lib:
-            print(f"ID: {item[0]}, title: {item[1]}")
+        db = self.cursor.fetchall()
+        for item in db:
+            print(f"ID: {item[0]}, : {item[1]}")
     def CloseConnection(self):
         self.conn.close()
 class DbLibraryOperations:

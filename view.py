@@ -17,6 +17,12 @@ class LibViewer:
     def showBooks(self):
         show = "SELECT book_id, title FROM books"
         return self.db_connection.showQuery(show)
+    def showAuthor(self):
+        show = "SELECT author_id, name FROM authors"
+        return self.db_connection.showQuery(show)
+    def showGenre(self):
+        show = "SELECT genre_id, name FROM genres"
+        return self.db_connection.showQuery(show)
 
 
 

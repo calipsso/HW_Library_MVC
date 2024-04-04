@@ -16,6 +16,10 @@ class LibController:
             vyber = int(input("zadaj volbu: "))
 
             if vyber == 1:
+                print("Autory")
+                self.vLib.showAuthor()
+                print("---------------- \n Zanre ")
+                self.vLib.showGenre()
                 self.mLib.addBook()
             elif vyber == 2:
                 self.mLib.addUser()
