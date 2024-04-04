@@ -21,6 +21,8 @@ class LibController:
 
             if vyber == 1:
                 self.mLib.addBook()
+            elif vyber == 2:
+                self.mLib.addUser()
             elif vyber == 3:
                 self.vLib.searchBook()
             else:

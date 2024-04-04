@@ -25,18 +25,15 @@ class DbConnection:
 class DbLibraryOperations:
     def __init__(self):
         self.db_connection = DbConnection()
-
+    def usrInput(self, prompt):
+        print(prompt)
+        return input()
     def addBook(self):
-        print("Vlozte nozov knihy: ")
-        title = input()
-        print("Vlozte ISBN: ")
-        ISBN = input()
-        print("Vlozte Author ID")
-        autID = input()
-        print("Vlozte Genre ID")
-        genID = input()
-        print("Kopie")
-        copies = input()
+        title = self.usrInput("Vlozte nazov knihy: ")
+        ISBN = self.usrInput("Vlozte ISBN knihy: ")
+        autID = self.usrInput("Vlozte autora knihy: ")
+        genID = self.usrInput("Vlozte zaner knihy: ")
+        copies = self.usrInput("Vlozte mnozstvo kopii: ")
         add = "INSERT INTO books (title,author_id, genre_id, ISBN, copies) VALUES (%s, %s, %s, %s, %s)"
         parameters = title,autID, genID, ISBN, copies
         return self.db_connection.ExecQuery(add, parameters)
@@ -46,9 +43,13 @@ class DbLibraryOperations:
         #search = "SELECT title FROM books WHERE book_id = %s"
         #parameter = id
         #return self.db_connection.searchQuery(search, parameter)
-    def addUser(self, userInfo):
-        addUsr = ("INSERT INTO members (first_name, last_name, email, registration_date) VALUES (%s, %s, %s, %s)",(userInfo, ))
-        return self.db_connection.ExecQuery(addUsr)
+    def addUser(self):
+        meno =self.usrInput("Vloz meno: ")
+        priezvisko = self.usrInput("Vloz priezvisko: ")
+        email = self.usrInput("email: ")
+        addUsr = "INSERT INTO members (first_name, last_name, email) VALUES (%s, %s, %s)"
+        parameters = meno, priezvisko,email
+        return self.db_connection.ExecQuery(addUsr, parameters)
 
     def checkUsr(self, checkInfo):
         search = ("SELECT * from members WHERE first_name = %s ", (checkInfo))
